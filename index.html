@@ -1,48 +1,93 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Sinh Tồn Sinh Viên</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Sinh Tồn Sinh Viên</title>
+  
+  <!-- Liên kết đến file CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="top">
-  <div id="tM">Mục tiêu ngày</div>
-  <div id="tL"><div id="tK"></div></div>
-  <div id="tB"><b>1.000.000 ₫</b><small>Tiền mặt</small></div>
-  <button id="phBtn">📱 Điện thoại</button>
-</div>
 
-<div id="hud" class="panel">
-  <div id="day">Ngày 1/3 · 06:00</div>
-  <div class="row"><span class="lb">Tiền</span><b id="money">200</b></div>
-  <div class="row"><span class="lb">Năng lượng</span><div class="bar"><i id="bE" style="background:var(--good)"></i></div></div>
-  <div class="row"><span class="lb">Đói</span><div class="bar"><i id="bH" style="background:var(--bad)"></i></div></div>
-  <div id="goal">Mục tiêu: cuối ngày 3 phải có ít nhất 250 để trả tiền trọ.</div>
-  <div id="todo" style="font-size:12px;margin-top:4px;color:var(--acc)"></div>
-</div>
+  <!-- HUD Control Panel -->
+  <div id="hud" class="panel">
+    <div id="day">Ngày 1/3 · 06:00</div>
+    <div class="row">
+      <span class="lb">Tiền</span>
+      <b id="money">200</b>
+    </div>
+    <div class="row">
+      <span class="lb">Năng lượng</span>
+      <div class="bar"><i id="bE" style="background:var(--good)"></i></div>
+    </div>
+    <div class="row">
+      <span class="lb">Đói</span>
+      <div class="bar"><i id="bH" style="background:var(--bad)"></i></div>
+    </div>
+    <div id="goal">
+      Mục tiêu: cuối ngày 3 phải có ít nhất 250 để trả tiền trọ. Mỗi đêm mất 30 tiền điện nước.
+    </div>
+    <div id="todo" style="font-size:12px;margin-top:4px;color:var(--acc)"></div>
+  </div>
 
-<div id="prompt" class="panel"></div>
-<div id="toast" class="panel"></div>
-<div id="prog" class="panel"><span id="progT">Đang làm ca…</span><div class="bar"><i id="progB" style="background:var(--acc);width:0"></i></div></div>
-<div id="vig"></div>
-<div id="fade"></div>
+  <div id="prompt" class="panel"></div>
+  <div id="toast" class="panel"></div>
+  
+  <div id="prog" class="panel">
+    <span id="progT">Đang làm ca…</span>
+    <div class="bar"><i id="progB" style="background:var(--acc);width:0"></i></div>
+  </div>
 
-<div id="start" class="screen"><div>
-  <h1>Sinh Tồn Sinh Viên</h1>
-  <p>Sinh viên năm nhất vừa từ quê lên thành phố, thuê phòng trọ 1,5 triệu/tháng. Trong ví có 1.000.000 ₫, bố mẹ chuyển 2.000.000 ₫/tháng.</p>
-  <p><kbd>W A S D</kbd> di chuyển · <kbd>Shift</kbd> chạy · <kbd>E</kbd> tương tác · <kbd>T</kbd> điện thoại · <kbd>Esc</kbd> tạm dừng</p>
-  <button id="btnStart">Bắt đầu</button>
-</div></div>
+  <div id="vig"></div>
+  <div id="fade"></div>
 
-<div id="pause" class="screen hidden"><div><h1>Tạm dừng</h1><p>Nhấn Esc để tiếp tục.</p></div></div>
-<div id="end" class="screen hidden"><div><h1 id="endT"></h1><p id="endP"></p><button id="btnAgain">Chơi lại</button></div></div>
-<div id="mechModal" class="screen hidden" style="z-index:90"><div id="mechBox" class="panel" style="max-width:540px;width:92%;padding:22px;text-align:left"></div></div>
+  <!-- Start Screen -->
+  <div id="start" class="screen">
+    <div>
+      <h1>Sinh Tồn Sinh Viên</h1>
+      <p>
+        Sinh viên năm nhất vừa từ quê lên thành phố, thuê phòng trọ 1,5 triệu/tháng. Trong ví có 1.000.000 ₫, 
+        bố mẹ chuyển 2.000.000 ₫/tháng. Hạn tiền trọ (+200k điện nước) là ngày 15, học phí 10.000.000 ₫ là ngày 60 
+        (bạn có thể chọn BỎ HỌC). Đi học Thứ 2/5/6, học nghề lấy bằng, đi làm, khởi nghiệp, đầu tư, ăn uống, 
+        giữ cảm xúc và sức khỏe để sống sót.
+      </p>
+      <p>
+        <kbd>W A S D</kbd> di chuyển · 
+        <kbd>Shift</kbd> chạy (tốn sức) · 
+        <kbd>E</kbd> tương tác · 
+        <kbd>T</kbd> điện thoại · 
+        <kbd>Esc</kbd> tạm dừng · 
+        trên điện thoại dùng cần điều khiển ảo
+      </p>
+      <button id="btnStart" type="button">Bắt đầu</button>
+    </div>
+  </div>
 
-<!-- Thư viện Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<!-- Logic game -->
-<script src="main.js"></script>
+  <!-- Pause Screen -->
+  <div id="pause" class="screen hidden">
+    <div>
+      <h1>Tạm dừng</h1>
+      <p>Nhấn Esc để tiếp tục.</p>
+    </div>
+  </div>
+
+  <!-- End Screen -->
+  <div id="end" class="screen hidden">
+    <div>
+      <h1 id="endT"></h1>
+      <p id="endP"></p>
+      <button id="btnAgain" type="button">Chơi lại</button>
+    </div>
+  </div>
+
+  <!-- Mechanism Modal -->
+  <div id="mechModal" class="screen hidden" style="z-index:90">
+    <div id="mechBox" class="panel" style="max-width:540px;width:92%;padding:22px;text-align:left"></div>
+  </div>
+
+  <!-- External Libraries & Main Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
